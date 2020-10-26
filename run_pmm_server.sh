@@ -16,5 +16,5 @@ fi
 ### Ping host ####
 ansible -i $SCRIPT_PATH/hosts -m ping $VAR_HOST -v
 
-### Haproxy setup ####
+### PMM setup ####
 ansible-playbook -v -i $SCRIPT_PATH/hosts $SCRIPT_PATH/playbook/pmm_server.yml -l $VAR_HOST
