@@ -6,7 +6,7 @@ echo "##############"
 verify_docker=`rpm -qa | grep docker`
 if [[ $verify_docker == "docker"* ]]
 then
-  echo "$verify_docker is installed!"
+  echo "$verify_docker is already installed!"
 else
   ##### FIREWALLD DISABLE #########################
   systemctl disable firewalld
@@ -42,7 +42,7 @@ else
   curl -fsSL https://get.docker.com -o get-docker.sh
   sh get-docker.sh
 
-  ##### SYSCTL Haproxy ###########################
+  ##### SYSCTL Docker ###########################
   # insert parameters into /etc/sysctl.conf for incresing docker limits
   echo "# docker preps
   vm.swappiness = 1
@@ -86,6 +86,8 @@ else
   echo '    ulimit -u 16384 -n 65536' >> /etc/profile
   echo '  fi' >> /etc/profile
   echo 'fi' >> /etc/profile
+
+  echo "Docker has been installed successfully!"
 fi
 
 echo "##############"
